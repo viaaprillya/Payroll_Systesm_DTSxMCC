@@ -62,6 +62,7 @@ namespace API.Repositories.Data
 
         public int PengajuanCuti(PengajuanCuti pengajuanCuti)
         {
+            int totalcuti=0;
             //var karyawan = myContext.Karyawan.Find(pengajuanCuti.KaryawanID);
             var data = myContext.Cuti
                 .Include(x => x.Karyawan)
@@ -69,8 +70,11 @@ namespace API.Repositories.Data
                     x.Karyawan.ID.Equals(pengajuanCuti.KaryawanID)
                     )
                 .GroupBy(x => x.KaryawanID)
-                .Select(x => new { totalJumlahHari = x.Sum(x => x.JumlahHari) }).First();
-            int totalcuti = data.totalJumlahHari;
+                .Select(x => new { totalJumlahHari = x.Sum(x => x.JumlahHari) }).FirstOrDefault();
+            if (data != null)
+            {
+                totalcuti = data.totalJumlahHari;
+            }
             if (data==null || totalcuti <= 5)
             {
                 InputCuti inputCuti = new InputCuti();
@@ -83,9 +87,6 @@ namespace API.Repositories.Data
             }
             int tolak = 0;
             return tolak;
-            {
-
-            }
         }
     }
 }
