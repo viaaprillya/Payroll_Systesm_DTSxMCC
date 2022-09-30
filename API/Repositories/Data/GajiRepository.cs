@@ -1,7 +1,7 @@
 ﻿using API.Context;
 using API.Models;
 using API.ViewModels;
-using API.Repositories
+using API.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -17,7 +17,7 @@ namespace API.Repositories.Data
             this.myContext = myContext;
         }
 
-        public SlipGaji slipGaji (CetakSlipGaji cetakSlipGaji)
+        public SlipGaji CetakSlipGaji (CetakSlipGaji cetakSlipGaji)
         {
             SlipGaji slipGaji = new SlipGaji();
             var data = myContext.Gaji.FirstOrDefault(x =>

@@ -48,7 +48,7 @@ namespace API.Repositories.Data
 
         public int Put(Lembur lembur)
         {
-            var data = myContext.Lembur.Find(bonus.ID);
+            var data = myContext.Lembur.Find(lembur.ID);
             data.KaryawanID = lembur.KaryawanID;
             data.JumlahJam = lembur.JumlahJam;
             data.Tanggal = lembur.Tanggal;

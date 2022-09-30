@@ -1,6 +1,7 @@
 using API.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using API.Repositories.Data;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -51,6 +52,12 @@ namespace API
                     }
                 });
             });
+
+            services.AddScoped<CutiRepository>();
+            services.AddScoped<GajiRepository>();
+            services.AddScoped<CutiRepository>();
+            services.AddScoped<LemburRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

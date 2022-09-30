@@ -4,9 +4,9 @@ namespace API.ViewModels
 {
     public class PengajuanCuti
     {
-        public int KaryawanID;
-        public DateTime Tanggal;
-        public int JumlahHari;
-        public string Keterangan;
+        public int KaryawanID { get; set; }
+        public DateTime Tanggal { get; set; }
+        public int JumlahHari { get; set; }
+        public string Keterangan { get; set; }
     }
 }

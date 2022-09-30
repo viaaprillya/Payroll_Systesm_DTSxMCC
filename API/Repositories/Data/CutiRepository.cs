@@ -81,7 +81,7 @@ namespace API.Repositories.Data
                 var result = Post(inputCuti);
                 return result;
             }
-            int tolak = 3;
+            int tolak = 0;
             return tolak;
             {
 
