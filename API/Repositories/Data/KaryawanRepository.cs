@@ -34,7 +34,7 @@ namespace API.Repositories.Data
             return data;
         }
 
-        public int Post(InputKarywan inputKaryawan)
+        public int Post(InputKaryawan inputKaryawan)
         {
             Karyawan karyawan = new Karyawan();
             karyawan.NamaLengkap = inputKaryawan.NamaLengkap;

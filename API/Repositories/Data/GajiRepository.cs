@@ -103,6 +103,7 @@ namespace API.Repositories.Data
 
         }
 
+
         public int Post(CetakSlipGaji cetakSlipGaji)
         {
             Gaji gaji = new Gaji();

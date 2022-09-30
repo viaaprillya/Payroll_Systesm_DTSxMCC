@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.ViewModels
 {
-    public class InputKarywan
+    public class InputKaryawan
     {
             public string NamaLengkap { get; set; }
             public string Email { get; set; }
