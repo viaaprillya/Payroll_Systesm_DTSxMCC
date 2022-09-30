@@ -76,7 +76,7 @@ namespace API.Repositories.Data
             double totalCuti = (double)cuti * (0.025 * (double)gaji);
             double totalLembur = (double)lembur* (0.005 * (double)gaji);
 
-            if (data!=null) {
+            if (data==null) {
                 Post(cetakSlipGaji);
             }
             var slip = Get(cetakSlipGaji);
