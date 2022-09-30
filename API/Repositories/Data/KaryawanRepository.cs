@@ -10,7 +10,7 @@ namespace API.Repositories.Data
     public class KaryawanRepository : IKaryawanRepository
     {
         MyContext myContext;
-        public KaryawanRepository()
+        public KaryawanRepository(MyContext myContext)
         {
             this.myContext = myContext;
         }

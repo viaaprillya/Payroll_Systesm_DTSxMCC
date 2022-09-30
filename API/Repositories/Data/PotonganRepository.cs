@@ -11,7 +11,7 @@ namespace API.Repositories.Data
     public class PotonganRepository : IPotonganRepository
     {
         MyContext myContext;
-        public PotonganRepository()
+        public PotonganRepository(MyContext myContext)
         {
             this.myContext = myContext;
         }

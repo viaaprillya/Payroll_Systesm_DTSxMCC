@@ -12,7 +12,7 @@ namespace API.Repositories.Data
     public class CutiRepository : ICutiRepository
     {
         MyContext myContext;
-        public CutiRepository()
+        public CutiRepository(MyContext myContext)
         {
             this.myContext = myContext;
         }

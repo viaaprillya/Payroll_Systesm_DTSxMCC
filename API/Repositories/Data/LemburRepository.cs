@@ -10,7 +10,7 @@ namespace API.Repositories.Data
     public class LemburRepository : ILemburRepository
     {
         MyContext myContext;
-        public LemburRepository()
+        public LemburRepository(MyContext myContext)
         {
             this.myContext = myContext;
         }

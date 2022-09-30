@@ -4,20 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class GajiController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GajiController : ControllerBase
     {
-        public class DepartmentController : ControllerBase
-        {
             GajiRepository gajiRepository;
 
-            public DepartmentController(GajiRepository gajiRepository)
+            public GajiController(GajiRepository gajiRepository)
             {
                 this.gajiRepository = gajiRepository;
             }
 
 
             [HttpPost]
-            [Route("Cetak Slip Gaji")]
+            [Route("/CetakSlipGaji")]
             public IActionResult CetakSlipGaji (CetakSlipGaji cetak)
             {
                 var data = gajiRepository.CetakSlipGaji(cetak);
@@ -25,6 +25,6 @@ namespace API.Controllers
                     return Ok(new { message = "Berhasil Cetak Slip Gaji", statusCode = 200, data = data });
                 return BadRequest(new { message = "Gagal Cetak Slip", statusCode = 400, data = data });
             }
-        }
     }
 }
+

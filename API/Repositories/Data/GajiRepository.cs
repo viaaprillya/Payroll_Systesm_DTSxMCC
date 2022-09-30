@@ -12,7 +12,7 @@ namespace API.Repositories.Data
     public class GajiRepository
     {
         MyContext myContext;
-        public GajiRepository()
+        public GajiRepository(MyContext myContext)
         {
             this.myContext = myContext;
         }

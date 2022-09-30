@@ -55,8 +55,10 @@ namespace API
 
             services.AddScoped<CutiRepository>();
             services.AddScoped<GajiRepository>();
-            services.AddScoped<CutiRepository>();
             services.AddScoped<LemburRepository>();
+            services.AddScoped<PotonganRepository>();
+            services.AddScoped<BonusRepository>();
+            services.AddScoped<KaryawanRepository>();
 
         }
 
