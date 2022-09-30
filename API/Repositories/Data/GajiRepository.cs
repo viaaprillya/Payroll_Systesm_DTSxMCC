@@ -88,6 +88,8 @@ namespace API.Repositories.Data
             slipGaji.TotalBonus = (double)bonus;
             slipGaji.TotalBonusLembur = totalLembur;
             slipGaji.TotalPotonganCuti = totalCuti;
+            slipGaji.GajiPokok = gaji;
+            slipGaji.Tunjangan = tunjangan;
             double totalGaji = gaji + tunjangan - potongan + bonus - totalCuti + totalLembur;
             slipGaji.TotalGaji = totalGaji;
             return slipGaji;
