@@ -23,49 +23,53 @@ namespace API.Repositories.Data
             var data = myContext.Gaji.FirstOrDefault(x =>
                     x.KaryawanID.Equals(cetakSlipGaji.KaryawanID)&& x.Bulan==cetakSlipGaji.Bulan && x.Tahun == cetakSlipGaji.Tahun);
             var karyawan = myContext.Karyawan.Find(cetakSlipGaji.KaryawanID);
-            var bonus = myContext.Bonus
+            var bonuss = myContext.Bonus
                     .Include(x => x.Karyawan)
                     .Where(x =>
                     x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
                     )
                     .GroupBy(x => x.KaryawanID)
-                    .Select(x => new { totalBonus = x.Sum(x => x.Jumlah) }).FirstOrDefault().totalBonus;
-            var potongan = myContext.Potongan
+                    .Select(x => new { totalBonus = x.Sum(x => x.Jumlah) }).FirstOrDefault();
+            var lemburs = myContext.Lembur
                     .Include(x => x.Karyawan)
                     .Where(x =>
                     x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
                     )
                     .GroupBy(x => x.KaryawanID)
-                    .Select(x => new { totalPotongan = x.Sum(x => x.Jumlah) }).FirstOrDefault().totalPotongan;
-            var lembur = myContext.Lembur
+                    .Select(x => new { totalLembur = x.Sum(x => x.JumlahJam) }).FirstOrDefault();
+            var cutis = myContext.Cuti
                     .Include(x => x.Karyawan)
                     .Where(x =>
                     x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
                     )
                     .GroupBy(x => x.KaryawanID)
-                    .Select(x => new { totalLembur = x.Sum(x => x.JumlahJam) }).FirstOrDefault().totalLembur;
-            var cuti = myContext.Cuti
+                    .Select(x => new { totalCuti = x.Sum(x => x.JumlahHari) }).FirstOrDefault();
+            var potongans = myContext.Potongan
                     .Include(x => x.Karyawan)
                     .Where(x =>
                     x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
                     )
                     .GroupBy(x => x.KaryawanID)
-                    .Select(x => new { totalCuti = x.Sum(x => x.JumlahHari) }).FirstOrDefault().totalCuti;
-            if (cuti == null)
+                    .Select(x => new { totalPotongan = x.Sum(x => x.Jumlah) }).FirstOrDefault();
+            var cuti = 0;
+            var potongan = 0;
+            var lembur = 0;
+            var bonus = 0;
+            if (cutis != null)
             {
-                cuti = 0;
+                cuti = cutis.totalCuti;
             }
-            if (potongan == null)
+            if (potongans != null)
             {
-                potongan = 0;
+                potongan = potongans.totalPotongan;
             }
-            if (lembur == null)
+            if (lemburs != null)
             {
-                lembur = 0;
+                lembur = lemburs.totalLembur;
             }
-            if (bonus == null)
+            if (bonuss != null)
             {
-                bonus = 0;
+                bonus = bonuss.totalBonus;
             }
             var gaji = myContext.Jabatan.Find(karyawan.JabatanID).GajiPokok;
             var tunjangan = myContext.Jabatan.Find(karyawan.JabatanID).Tunjangan;
