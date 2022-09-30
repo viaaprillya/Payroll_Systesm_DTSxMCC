@@ -11,7 +11,7 @@ namespace API.Repositories.Data
 
     {
         MyContext myContext;
-        public BonusRepository()
+        public BonusRepository(MyContext myContext)
         {
             this.myContext = myContext;
         }
