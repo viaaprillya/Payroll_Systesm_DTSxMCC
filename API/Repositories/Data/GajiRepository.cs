@@ -26,28 +26,36 @@ namespace API.Repositories.Data
             var bonuss = myContext.Bonus
                     .Include(x => x.Karyawan)
                     .Where(x =>
-                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
+                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID) &&
+                    x.Tanggal.Month == cetakSlipGaji.Bulan &&
+                    x.Tanggal.Year == cetakSlipGaji.Tahun
                     )
                     .GroupBy(x => x.KaryawanID)
                     .Select(x => new { totalBonus = x.Sum(x => x.Jumlah) }).FirstOrDefault();
             var lemburs = myContext.Lembur
                     .Include(x => x.Karyawan)
                     .Where(x =>
-                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
+                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID) &&
+                    x.Tanggal.Month == cetakSlipGaji.Bulan &&
+                    x.Tanggal.Year == cetakSlipGaji.Tahun
                     )
                     .GroupBy(x => x.KaryawanID)
                     .Select(x => new { totalLembur = x.Sum(x => x.JumlahJam) }).FirstOrDefault();
             var cutis = myContext.Cuti
                     .Include(x => x.Karyawan)
                     .Where(x =>
-                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
+                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID) &&
+                    x.Tanggal.Month == cetakSlipGaji.Bulan &&
+                    x.Tanggal.Year == cetakSlipGaji.Tahun
                     )
                     .GroupBy(x => x.KaryawanID)
                     .Select(x => new { totalCuti = x.Sum(x => x.JumlahHari) }).FirstOrDefault();
             var potongans = myContext.Potongan
                     .Include(x => x.Karyawan)
                     .Where(x =>
-                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID)
+                    x.Karyawan.ID.Equals(cetakSlipGaji.KaryawanID) && 
+                    x.Tanggal.Month == cetakSlipGaji.Bulan && 
+                    x.Tanggal.Year == cetakSlipGaji.Tahun 
                     )
                     .GroupBy(x => x.KaryawanID)
                     .Select(x => new { totalPotongan = x.Sum(x => x.Jumlah) }).FirstOrDefault();

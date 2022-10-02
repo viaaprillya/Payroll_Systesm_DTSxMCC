@@ -67,7 +67,9 @@ namespace API.Repositories.Data
             var data = myContext.Cuti
                 .Include(x => x.Karyawan)
                 .Where(x =>
-                    x.Karyawan.ID.Equals(pengajuanCuti.KaryawanID)
+                    x.Karyawan.ID.Equals(pengajuanCuti.KaryawanID) &&
+                    x.Tanggal.Month==pengajuanCuti.Tanggal.Month &&
+                    x.Tanggal.Year==pengajuanCuti.Tanggal.Year
                     )
                 .GroupBy(x => x.KaryawanID)
                 .Select(x => new { totalJumlahHari = x.Sum(x => x.JumlahHari) }).FirstOrDefault();
