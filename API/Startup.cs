@@ -53,6 +53,12 @@ namespace API
                 });
             });
 
+            services.AddCors(c =>
+           {
+               c.AddPolicy("AllowOrigin", options)
+           });
+
+            #region Dependency Injection
             services.AddScoped<CutiRepository>();
             services.AddScoped<GajiRepository>();
             services.AddScoped<LemburRepository>();
@@ -75,6 +81,8 @@ namespace API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
