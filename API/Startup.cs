@@ -55,7 +55,7 @@ namespace API
 
             services.AddCors(c =>
            {
-               c.AddPolicy("AllowOrigin", options)
+               c.AddPolicy("AllowOrigin", options=>options.AllowAnyOrigin());
            });
 
             #region Dependency Injection
@@ -65,6 +65,7 @@ namespace API
             services.AddScoped<PotonganRepository>();
             services.AddScoped<BonusRepository>();
             services.AddScoped<KaryawanRepository>();
+            #endregion
 
         }
 

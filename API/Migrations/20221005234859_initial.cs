@@ -108,7 +108,8 @@ namespace API.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BulanTahun = table.Column<DateTime>(nullable: false),
+                    Bulan = table.Column<int>(nullable: false),
+                    Tahun = table.Column<int>(nullable: false),
                     KaryawanID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

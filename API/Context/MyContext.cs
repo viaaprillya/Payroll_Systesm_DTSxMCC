@@ -25,7 +25,5 @@ namespace API.Context
         public DbSet<Role> Role { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
 
-
-
     }
 }
