@@ -36,7 +36,7 @@ namespace API.Controllers
             return BadRequest(new { message = "Gagal Get Karyawan", statusCode = 400, data = data });
         }
 
-        [HttpDelete]
+        [HttpDelete("id")]
         public IActionResult Delete(int ID)
         {
             var data = karyawanRepository.Delete(ID);

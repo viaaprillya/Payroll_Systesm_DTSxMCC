@@ -96,7 +96,7 @@ $(document).on("click", "#buttonDeleteKaryawan", function() {
 
   $.ajax({
     url: "https://localhost:44392/api/Karyawan/id?id="+id,
-      type: "GET"
+    type: "GET"
   }).done((result) => {
     var nama = result.data.namaLengkap
     console.log("nama =" + nama)
@@ -164,12 +164,10 @@ function UpdateKaryawan() {
 
 function DeleteKaryawan() {
   var id = parseInt($("#buttonDeleteConfirmed").data('id'));
+  console.log(id)
   $.ajax({
-    url: "https://localhost:44392/api/Karyawan",
-    type: "DELETE",
-    contentType: "application/json;charset=utf-8",
-    dataType: "json",
-    data: id //jika terkena 415 unsupported media type (tambahkan headertype Json & JSON.Stringify();)
+    url: "https://localhost:44392/api/Karyawan/id?id=" + id,
+    type: "DELETE"
   }).done((result) => {
     swal("Good job!", "Karyawan berhasil dihapus!", "success").then(function () {
       location.reload()
