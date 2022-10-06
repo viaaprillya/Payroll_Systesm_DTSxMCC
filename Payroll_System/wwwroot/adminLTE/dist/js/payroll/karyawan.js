@@ -2,7 +2,8 @@
 $(document).ready(function () {
   $("#tabelKaryawan").DataTable({
     ajax: {
-      url: "https://localhost:44392/",
+      url: "https://localhost:44392/api/Karyawan",
+      type: "GET"
       dataSrc: "data",
       dataType: "JSON"
     },
