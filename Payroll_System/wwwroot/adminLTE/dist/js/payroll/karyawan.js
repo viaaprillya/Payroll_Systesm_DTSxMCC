@@ -2,8 +2,8 @@
 $(document).ready(function () {
   $("#tabelKaryawan").DataTable({
     ajax: {
-      url: "http://localhost:44392",
-      dataSrc: "results",
+      url: "https://localhost:44392/",
+      dataSrc: "data",
       dataType: "JSON"
     },
     columns: [
@@ -27,7 +27,7 @@ $(document).ready(function () {
       },
       {
         data: "jabatanID"
-      },
+      }
     ]
   })
 })
