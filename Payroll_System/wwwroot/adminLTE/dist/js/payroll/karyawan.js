@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#tabelKaryawan").DataTable({
     ajax: {
       url: "https://localhost:44392/api/Karyawan",
-      type: "GET"
+      type: "GET",
       dataSrc: "data",
       dataType: "JSON"
     },
@@ -27,7 +27,7 @@ $(document).ready(function () {
         data: "nomerTelepon"
       },
       {
-        data: "jabatanID"
+        data: "jabatan.nama"
       }
     ]
   })

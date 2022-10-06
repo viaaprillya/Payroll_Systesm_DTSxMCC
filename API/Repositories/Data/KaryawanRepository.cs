@@ -2,6 +2,7 @@
 using API.Models;
 using API.Repositories.Interface;
 using API.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,7 +25,7 @@ namespace API.Repositories.Data
 
         public List<Karyawan> Get()
         {
-            var data = myContext.Karyawan.ToList();
+            var data = myContext.Karyawan.Include(x => x.Jabatan).ToList();
             return data;
         }
 
