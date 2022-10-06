@@ -1,8 +1,8 @@
 /* <!-- Data Table --> */
 $(document).ready(function () {
-  $("#tabelPokemon").DataTable({
+  $("#tabelKaryawan").DataTable({
     ajax: {
-      url: "https://pokeapi.co/api/v2/pokemon/",
+      url: "http://localhost:44392",
       dataSrc: "results",
       dataType: "JSON"
     },
@@ -14,16 +14,19 @@ $(document).ready(function () {
         }
       },
       {
-        data: "name",
-        render: function (data, type, row) {
-          return sentenceCase(data);
-        }
+        data: "namaLengkap"
       },
       {
-        data: "",
-        render: function (data, type, row) {
-          return `<button class="btn btn-primary" onclick="detailPokemon('${row.url}')" data-bs-toggle="modal" data-bs-target="#modalDetailPokemon">Detail</button>`
-        }
+        data: "email"
+      },
+      {
+        data: "nomerRekening"
+      },
+      {
+        data: "nomerTelepon"
+      },
+      {
+        data: "jabatanID"
       },
     ]
   })
