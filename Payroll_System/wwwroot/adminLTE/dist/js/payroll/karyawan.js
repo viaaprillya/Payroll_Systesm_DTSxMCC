@@ -126,11 +126,11 @@ function InputKaryawan() {
     dataType: "json",
     data: JSON.stringify(karyawan) //jika terkena 415 unsupported media type (tambahkan headertype Json & JSON.Stringify();)
   }).done((result) => {
-    alert("Karyawan berhasil ditambahkan!");
-    location.reload()
+    swal("Good job!", "Karyawan berhasil ditambahkan!", "success").then(function () {
+      location.reload()
+    })
   }).fail((error) => {
-    alert("Karyawan gagal ditambahkan!");
-    console.log(error);
+    swal("Sorry!", "Karyawan gagal ditambahkan!", "error");
   })
 }
 
@@ -154,24 +154,27 @@ function UpdateKaryawan() {
     dataType: "json",
     data: JSON.stringify(karyawan) //jika terkena 415 unsupported media type (tambahkan headertype Json & JSON.Stringify();)
   }).done((result) => {
-    alert("Karyawan berhasil diubah!");
-    location.reload()
+    swal("Good job!", "Karyawan berhasil diubah!", "success").then(function () {
+      location.reload()
+    })
   }).fail((error) => {
-    alert("Karyawan gagal diubah!");
+    swal("Sorry!", "Karyawan gagal diubah!", "error");
   })
 }
 
 function DeleteKaryawan() {
-  var id = $("buttonDeleteConfirmed").data('id');
+  var id = parseInt($("#buttonDeleteConfirmed").data('id'));
+  console.log(id)
   $.ajax({
     url: "https://localhost:44392/api/Karyawan",
     contentType: "application/json;charset=utf-8",
     dataType: "json",
     data: id //jika terkena 415 unsupported media type (tambahkan headertype Json & JSON.Stringify();)
   }).done((result) => {
-    alert("Karyawan berhasil dihapus!");
-    location.reload()
+    swal("Good job!", "Karyawan berhasil dihapus!", "success").then(function () {
+      location.reload()
+    })
   }).fail((error) => {
-    alert("Karyawan gagal dihapus!");
+    swal("Sorry!", "Karyawan gagal dihapus!", "error");
   })
 }
